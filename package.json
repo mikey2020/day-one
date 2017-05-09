@@ -2,10 +2,9 @@
   "name": "day-one",
   "version": "1.0.0",
   "description": "Andela day one tasks ",
-  "main": "robot.js",
+  "main": "index.js",
   "scripts": {
-    "test": "jasmine ",
-    "start": "node app/robot.js"
+    "test": "jasmine "
   },
   "repository": {
     "type": "git",
