@@ -5,8 +5,8 @@ module.exports = {
 		let min = sortedlist[0];
 		let max = sortedlist[(list.length-1)];
 		if(min === max){
-			newList.push(min || max);
-			return newList;
+			//newList.push(min || max);
+			return [min];
 		}
 		newList.push(min);
 		newList.push(max);
