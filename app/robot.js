@@ -27,7 +27,8 @@ class Robot{
 		this.log = [];
 	}
 
-	checkDatabase(data){//robot checks if data is in its database 
+	//robot checks if data is in its database
+	checkDatabase(data){ 
 		if(this.database.indexOf(data) > -1){
 			return true;
 		}
@@ -36,7 +37,8 @@ class Robot{
 		}
 	}
 
-	move(direction){//move method that allows the robot to move 
+	//move method that allows the robot to move 
+	move(direction){
 		if(this.checkDatabase(direction) == true){
 			this.power -= 10;
 			return this.name + "moving " + direction + ".........." + "\n" + "Power level: " + this.power;
@@ -46,7 +48,8 @@ class Robot{
 		}
 	}
 
-	recharge(){// robot recharges until power is at max
+	// robot recharges until power is at max
+	recharge(){
 		while(this.power < this.maxPower){
 			this.power++;
 		}
@@ -69,13 +72,17 @@ class Robot{
 
 	}
 
+	//method to get user activity 
 	getLog(){
 		console.log("User activity log");
 		return this.log;
 	}
 }
 
+//child class of robot called Android
 class Android extends Robot {
+
+	//get Android Information
 	giveYourInformation(){
 		console.log("Hello i am Android " + this.version);
 		this.functionsList.push("talk","move/walk","run/sprint");
@@ -113,7 +120,8 @@ class Android extends Robot {
 			this.speak(recharge());
 		}
         
-        this.log.push(this.name + " " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs");
+        this.time = new Date();
+        this.log.push(this.name + " " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs" + " on " + this.time );
 		
 		return this.name + " just " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs";
 
@@ -139,10 +147,3 @@ class Android extends Robot {
 	}
 
 }
-let andy = new Android("andy");
-andy.speak((andy.do("walk","west",200)));
-andy.speak((andy.do("move","north west",100)));
-andy.speak(andy.recharge());
-andy.speak(andy.getLog());
-andy.run("west",80);
-//user.walk("north west",20);
