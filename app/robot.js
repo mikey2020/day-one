@@ -167,7 +167,7 @@ class Android extends Robot {
 
 }
 /*To use Android or Robot class you call the method directly or use 'do method' that allows 
-you make method calls by justing typing their names and  to display results of some functions use console.log()
+you make method calls by justing typing their names and  to display results of some functions use console.log().
 Example:
 
 let andy = new Android("chappie");
