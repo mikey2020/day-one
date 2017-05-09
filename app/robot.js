@@ -38,10 +38,10 @@ class Robot{
 	}
 
 	//move method that allows the robot to move 
-	move(direction){
+	move(distance,direction){
 		if(this.checkDatabase(direction) == true){
 			this.power -= 10;
-			return this.name + "moving " + direction + ".........." + "\n" + "Power level: " + this.power;
+			return this.name + "moving " + direction + " " + distance + ".........." + "\n" + "Power level: " + this.power;
 		}
 		else{
 			return "please enter valid direction";
@@ -57,17 +57,17 @@ class Robot{
 	}
 
 	//allows users give robot commands
-	do(action,actionArgument){
+	do(action,actionArgument,actionArgument1){
 		if(action === "move"){
 			console.log(actionArgument);
-			console.log(this.move(actionArgument));
+			console.log(this.move(actionArgument,actionArgument1));
 		}
 
 		else if(action === "recharge"){
 			return recharge();
 		}
         
-        this.log.push(this.name + " " +  action +  "d " + actionArgument)
+        this.log.push(this.name + " " +  action +  "d " + distance + "km " + actionArgument)
 		return this.name + " just " + action +  "d " + actionArgument;
 
 	}
@@ -95,10 +95,10 @@ class Android extends Robot {
 		
 		
 	}
-	move(direction,speed){
+	move(distance,direction,speed){
 		this.power = 1000000;
 		this.maxPower = 1000000;
-		if(this.checkDatabase(direction) == true && speed){
+		if(this.checkDatabase(direction) === true && speed){
 			this.power -= 30;
 			return "processing...............";
 			//return this.name + " moving " + direction + ".........." + "at " + speed +"m/secs" + "\n" + "Power level: " + this.power + " watts";
@@ -109,25 +109,28 @@ class Android extends Robot {
 		//this.recharge();
 	}
 	
-	do(action,actionArgument,actionArgument1){
+	do(action,actionArgument,actionArgument1,actionArgument2){
 		if(action === "move"){
-			this.speak(actionArgument);
-			this.speak(this.move(actionArgument,actionArgument1));
+			//this.speak(actionArgument);
+			this.speak(this.move(actionArgument,actionArgument1,actionArgument2));
 		}
 
 		else if(action === "walk"){
-			this.speak(actionArgument);
-			this.speak(this.walk(actionArgument,actionArgument1));
+			//this.speak(actionArgument);
+			this.speak(this.walk(actionArgument,actionArgument1,actionArgument2));
 		}
 
 		else if(action === "run"){
-			this.speak(actionArgument);
-			this.speak(this.run(actionArgument,actionArgument1));
+			//this.speak(actionArgument);
+			this.speak(this.run(actionArgument,actionArgument1,actionArgument2));
+			this.time = new Date();
+        	this.log.push(this.name + " ran " + actionArgument + "km " +  actionArgument1 + " at " + actionArgument2 + "m/secs" + " on " + this.time );
+			return this.name + " just " +  " ran " + actionArgument + "km " + actionArgument1 + " at " + actionArgument2 + "m/secs";
 		}
 
 		else if(action === "sprint"){
-			this.speak(actionArgument);
-			this.speak(this.sprint(actionArgument,actionArgument1));
+			//this.speak(actionArgument);
+			this.speak(this.sprint(actionArgument,actionArgument1,actionArgument2));
 		}
 
 
@@ -136,9 +139,9 @@ class Android extends Robot {
 		}
         
         this.time = new Date();
-        this.log.push(this.name + " " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs" + " on " + this.time );
+        this.log.push(this.name + " " + action +  "d " + actionArgument + "km " +  actionArgument1 + " at " + actionArgument2 + "m/secs" + " on " + this.time );
 		
-		return this.name + " just " + action +  "(e)d " + actionArgument + " at " + actionArgument1 + "m/secs";
+		return this.name + " just " + action +  "(e)d " + actionArgument + "km " + actionArgument1 + " at " + actionArgument2 + "m/secs";
 
 	}
 
@@ -146,10 +149,10 @@ class Android extends Robot {
 		console.log(data);
 	}
 
-	walk(direction,speed,action="walk", maxSpeed=30){
+	walk(distance,direction,speed,action="walk", maxSpeed=30){
 		//this.maxSpeed = 30;
 		if(speed <= maxSpeed){
-			return this.move(direction,speed);
+			return this.move(distance,direction,speed);
 		}
 		else{
 			return "am sorry i cannot " + action + "  that fast";
@@ -157,21 +160,20 @@ class Android extends Robot {
 		
 	}
 
-	run(direction,speed,action="run",maxSpeed=60){
-		return this.walk(direction,speed,action,maxSpeed);
+	run(distance,direction,speed,action="run",maxSpeed=60){
+		return this.walk(distance,direction,speed,action,maxSpeed);
 	}
 
-	sprint(direction,speed,action="sprint",maxSpeed=80){
-		return this.run(direction,speed,action,maxSpeed);
+	sprint(distance,direction,speed,action="sprint",maxSpeed=80){
+		return this.run(distance,direction,speed,action,maxSpeed);
 	}
 
 }
 /*To use Android or Robot class you call the method directly or use 'do method' that allows 
 you make method calls by justing typing their names and  to display results of some functions use console.log().
 Example:
-
+*/
 let andy = new Android("chappie");
 andy.tellMeAboutYourself();
-console.log(andy.do("sprint","west",10));
-
-*/
+console.log(andy.do("run",20,"west",10));
+console.log(andy.getLog());
