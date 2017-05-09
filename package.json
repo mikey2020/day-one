@@ -1,0 +1,23 @@
+{
+  "name": "day-one",
+  "version": "1.0.0",
+  "description": "Andela day one tasks ",
+  "main": "robot.js",
+  "scripts": {
+    "test": "jasmine ",
+    "start": "node app/robot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikey2020/day-one.git"
+  },
+  "author": "Michael Eboagu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikey2020/day-one/issues"
+  },
+  "homepage": "https://github.com/mikey2020/day-one#readme",
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  }
+}
