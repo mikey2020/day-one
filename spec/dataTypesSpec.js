@@ -1,12 +1,13 @@
+const myApp = require('../app/dataTypes');
 describe("Data types tests ", function() {
   describe("Case for some falsy values", function() {
 
     it("should return 'no value' for null", function() {
-      expect(dataTypes(null)).toEqual('no value');
+      expect(myApp.dataTypes(null)).toEqual('no value');
     });
 
     it("should return 'no value' for undefined", function() {
-      expect(dataTypes(undefined)).toEqual('no value');
+      expect(myApp.dataTypes(undefined)).toEqual('no value');
     });
 
   });
@@ -14,11 +15,11 @@ describe("Data types tests ", function() {
   describe("Case for booleans", function() {
 
     it("should return true for `true`", function() {
-      expect(dataTypes(true)).toBe(true);
+      expect(myApp.dataTypes(true)).toBe(true);
     });
 
     it("should return false for `false`", function() {
-      expect(dataTypes(false)).toBe(false);
+      expect(myApp.dataTypes(false)).toBe(false);
     });
 
   });
@@ -26,15 +27,15 @@ describe("Data types tests ", function() {
   describe("Case for Numbers", function() {
 
     it("should return 'less than 100' for 44", function() {
-      expect(dataTypes(44)).toBe('less than 100');
+      expect(myApp.dataTypes(44)).toBe('less than 100');
     });
 
     it("should return 'more than 100' for 144", function() {
-      expect(dataTypes(144)).toBe('more than 100');
+      expect(myApp.dataTypes(144)).toBe('more than 100');
     });
 
     it("should return 'equal to 100' for 100", function() {
-      expect(dataTypes(100)).toBe('equal to 100');
+      expect(myApp.dataTypes(100)).toBe('equal to 100');
     });
 
 
@@ -43,15 +44,15 @@ describe("Data types tests ", function() {
   describe("Case for Strings", function() {
 
     it("should return the length of `tergiversate`", function() {
-      expect(dataTypes('tergiversate')).toBe(12);
+      expect(myApp.dataTypes('tergiversate')).toBe(12);
     });
 
     it("should return the length of an empty string", function() {
-      expect(dataTypes('')).toBe(0);
+      expect(myApp.dataTypes('')).toBe(0);
     });
 
     it("should return the length of `555`", function() {
-      expect(dataTypes('555')).toBe(3);
+      expect(myApp.dataTypes('555')).toBe(3);
     });
 
   });
@@ -59,14 +60,14 @@ describe("Data types tests ", function() {
   describe("Case for arrays", function() {
 
     it("should return `2` for `[0, 1, 2]`", function() {
-      expect(dataTypes([0, 1, 2])).toBe(2);
+      expect(myApp.dataTypes([0, 1, 2])).toBe(2);
     });
 
     it("should return `undefined` for `[]`", function() {
-      expect(dataTypes([])).not.toBeDefined();
+      expect(myApp.dataTypes([])).not.toBeDefined();
     });
     it("should return `undefined` for `[4, 9]`", function() {
-      expect(dataTypes([4, 9])).not.toBeDefined();
+      expect(myApp.dataTypes([4, 9])).not.toBeDefined();
     });
   });
 
@@ -78,7 +79,7 @@ describe("Data types tests ", function() {
           return 'called callback';
         }
       };
-      expect(dataTypes(callback)).toBe('called callback');
+      expect(myApp.dataTypes(callback)).toBe('called callback');
     });
   });
 });
