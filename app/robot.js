@@ -20,7 +20,7 @@ class Robot{
 		this.bodyPartsMaterial = "steel";
 
 		//robot's logical properties
-		this.functionsList = ["move","do","check database","recharge"];
+		this.functionsList = ["move",,"check database","recharge"];
 		this.database = ["west","east","north","south","north west","south west","south east","north east"];
 
 		//to store user activity with robot
@@ -83,13 +83,16 @@ class Robot{
 class Android extends Robot {
 
 	//get Android Information
-	giveYourInformation(){
+	tellMeAboutYourself(){
+		this.version = "1.01";
 		console.log("Hello i am Android " + this.version);
 		this.functionsList.push("talk","move/walk","run/sprint");
-		for(let action in this.functionsList){
-			console.log("i can " + action);
+		for(let count in this.functionsList){
+			console.log("i can " + this.functionsList[count]);
 		}
-		this.version = "1.01";
+
+		console.log("You can issue commands to me using 'do' method");
+		
 		
 	}
 	move(direction,speed){
@@ -97,10 +100,11 @@ class Android extends Robot {
 		this.maxPower = 1000000;
 		if(this.checkDatabase(direction) == true && speed){
 			this.power -= 30;
-			return this.name + " moving " + direction + ".........." + "at " + speed +"m/secs" + "\n" + "Power level: " + this.power + " watts";
+			return "processing...............";
+			//return this.name + " moving " + direction + ".........." + "at " + speed +"m/secs" + "\n" + "Power level: " + this.power + " watts";
 		}
 		else{
-			return "please enter valid direction";
+			return "please enter a valid direction";
 		}
 		//this.recharge();
 	}
@@ -116,6 +120,17 @@ class Android extends Robot {
 			this.speak(this.walk(actionArgument,actionArgument1));
 		}
 
+		else if(action === "run"){
+			this.speak(actionArgument);
+			this.speak(this.run(actionArgument,actionArgument1));
+		}
+
+		else if(action === "sprint"){
+			this.speak(actionArgument);
+			this.speak(this.sprint(actionArgument,actionArgument1));
+		}
+
+
 		else if(action === "recharge"){
 			this.speak(recharge());
 		}
@@ -123,7 +138,7 @@ class Android extends Robot {
         this.time = new Date();
         this.log.push(this.name + " " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs" + " on " + this.time );
 		
-		return this.name + " just " + action +  "d " + actionArgument + " at " + actionArgument1 + "m/secs";
+		return this.name + " just " + action +  "(e)d " + actionArgument + " at " + actionArgument1 + "m/secs";
 
 	}
 
@@ -146,4 +161,17 @@ class Android extends Robot {
 		return this.walk(direction,speed,action,maxSpeed);
 	}
 
+	sprint(direction,speed,action="sprint",maxSpeed=80){
+		return this.run(direction,speed,action,maxSpeed);
+	}
+
 }
+/*To use Android or Robot class you call the method directly or use 'do method' that allows 
+you make method calls by justing typing their names and  to display results of some functions use console.log()
+Example:
+
+let andy = new Android("chappie");
+andy.tellMeAboutYourself();
+console.log(andy.do("sprint","west",10));
+
+*/
