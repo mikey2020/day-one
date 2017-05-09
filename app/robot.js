@@ -5,7 +5,7 @@ class Robot{//A robot class
 		this.power = 10000;
 		this.bodyParts = ["head","hands","legs"];
 		this.bodyPartsMaterial = "steel";
-		this.functionsList =
+		this.functionsList = ["move"]
 		this.database = ["west","east","north","south","north west","south west","south east","north east"];
 	}
 
@@ -38,3 +38,25 @@ class Robot{//A robot class
 
 	}
 }
+
+class Android extends Robot {
+	greet(){
+		this.functionsList.push("talk","walk","run");
+		this.version = "1.01";
+		console.log("Hello i am Android " + this.version);
+	}
+	move(direction){
+		greet();
+		this.power = 1000000;
+		if(this.checkDatabase(direction) == true){
+			this.power -= 30;
+			return this.name + "moving " + direction + ".........." + "\n" + "Power level: " + this.power;
+		}
+		else{
+			return "please enter valid direction";
+		}
+	}
+}
+let user = new Android("chappie");
+console.log(user.interface("move","west"));
+console.log(user.interface("move","north west"));
