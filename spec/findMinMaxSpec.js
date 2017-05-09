@@ -12,6 +12,14 @@
         expect(myApp.findMinMax([6, 4])).toEqual([4, 6]);
       });
 
+      it('should return [0,4] for [0, -2, -3 , 4]', function () {
+        expect(myApp.findMinMax([0, -2, -3 , 4])).toEqual([-3, 4]);
+      });
+
+      it('should return [4, 6] for [6, 4]', function () {
+        expect(myApp.findMinMax([6, 4])).toEqual([4, 6]);
+      });
+
       it('should return [2, 78] for [4, 66, 6, 44, 7, 78, 8, 68, 2]', function () {
         expect(myApp.findMinMax([4, 66, 6, 44, 7, 78, 8, 68, 2])).toEqual([2, 78]);
       });
@@ -35,7 +43,11 @@
 
   describe('Edge Cases for findMinMax function', function () {
 
-      it('should return "invalid input" for "0"', function () {
+      it('should return "invalid input" for 0', function () {
+        expect(myApp.findMinMax(0)).toEqual('invalid input');
+      });
+
+      it('should return "invalid input" for "35"', function () {
         expect(myApp.findMinMax(0)).toEqual('invalid input');
       });
 
