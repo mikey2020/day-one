@@ -29,5 +29,9 @@ module.exports = {
 		if(typeof data === "object"){
 			return data[2];
 		}
+
+		if(typeof data === "function"){
+			return data(true);
+		}
 	}
 }
