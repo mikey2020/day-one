@@ -138,9 +138,6 @@ class Android extends Robot {
 		return this.walk(direction,speed,action,maxSpeed);
 	}
 
-
-
-	
 }
 let andy = new Android("andy");
 andy.speak((andy.do("walk","west",200)));
