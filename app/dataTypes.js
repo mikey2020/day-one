@@ -6,7 +6,7 @@ module.exports = {
 			return data.length;
 		}
 
-		if(data === null || typeof data === undefined){
+		if(data === null ||  data === undefined){
 			return "no value";
 		}
 
@@ -19,7 +19,7 @@ module.exports = {
 				return 'less than 100';
 			}
 			else if(data === 100){
-				return 'equal 100';
+				return 'equal to 100';
 			}
 			else{
 				return 'more than 100';
