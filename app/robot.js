@@ -44,7 +44,7 @@ class Robot{
 			return this.name + "moving " + direction + " " + distance + ".........." + "\n" + "Power level: " + this.power;
 		}
 		else{
-			return "please enter valid direction";
+			return "please enter a valid direction";
 		}
 	}
 
@@ -67,7 +67,7 @@ class Robot{
 			return recharge();
 		}
         
-        this.log.push(this.name + " " +  action +  "d " + distance + "km " + actionArgument)
+        this.log.push(this.name + " " +  action +  "d " + actionArgument + "km " + actionArgument1)
 		return this.name + " just " + action +  "d " + actionArgument;
 
 	}
@@ -177,4 +177,4 @@ let andy = new Android("chappie");
 andy.tellMeAboutYourself();
 console.log(andy.do("run",20,"west",10));
 console.log(andy.getLog());
-*/
+*/  
