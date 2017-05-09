@@ -1,0 +1,20 @@
+{
+  "name": "day-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node app/robot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikey2020/day-one.git"
+  },
+  "author": "Michael Eboagu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikey2020/day-one/issues"
+  },
+  "homepage": "https://github.com/mikey2020/day-one#readme"
+}
